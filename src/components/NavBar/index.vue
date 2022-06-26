@@ -1,0 +1,54 @@
+<template>
+  <view class="top-header-bar">
+    <!-- 左侧输入框及搜索框 -->
+    <view
+      :style="{
+        marginTop: Fstyle.top,
+        height:Fstyle.height,
+      }"
+      class="left-box"
+    >
+    </view>
+  </view>
+</template>
+<script>
+export default {
+  name: 'NavBar',
+  data() {
+    return {
+      Fstyle: {
+        BoxBgColor: '#fff', //开始时透明色
+        top: '48rpx', //子元素位移值 后续可能要根据不同设备进行匹配暂定小程序适配
+        height: '29rpx', //同上
+        CityColor: '#ffffff', //城市颜色 ,
+        leftBoxBgColor: 'rgba(240, 240, 240,.3)', //输入框盒子的颜色'
+        placeHoladerColor: false, //控制切换placeHolder的文字颜色
+        lineBg: '#ffffff', //线条颜色
+      },
+    };
+  },
+  created() {},
+  mounted() {
+    this.getCapsule();
+  },
+  methods: {
+    getCapsule() {
+      //获取胶囊位置并改变顶部自定义导航栏的位置
+      let { height, top } = uni.getMenuButtonBoundingClientRect();
+      //让自定义导航栏头部组件始终和胶囊对齐 做到兼容各手机型号
+      this.Fstyle.top = top + 'px';
+      this.Fstyle.height = height + 'px';
+    },
+  },
+};
+</script>
+<style lang="scss" scoped>
+.top-header-bar {
+  width: 100%;
+  background-color: #fff;
+  .left-box {
+    display: flex;
+    width: 100%;
+  }
+}
+</style>
