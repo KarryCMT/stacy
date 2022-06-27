@@ -1,13 +1,46 @@
 {
-	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+	"pages": [ 
 		{
-			"path": "pages/index/index",
+			"path": "pages/base/success/index",
+			"style": {
+				"navigationBarTitleText": "注册成功",
+				"navigationStyle":"custom",
+				"disableScroll":true
+			}
+		},
+		{
+			"path": "pages/base/index/index",
 			"style": {
 				"navigationBarTitleText": "首页",
-				"navigationStyle":"custom"
-				
+				"navigationStyle":"custom",
+				"disableScroll":true
+			}
+		},
+		{
+			"path": "pages/base/reset/index",
+			"style": {
+				"navigationBarTitleText": "重置密码",
+				"navigationStyle":"custom",
+				"disableScroll":true
+			}
+		},
+		{
+			"path": "pages/base/password/index",
+			"style": {
+				"navigationBarTitleText": "找回密码",
+				"navigationStyle":"custom",
+				"disableScroll":true
+			}
+		},
+		{
+			"path": "pages/base/login/index",
+			"style": {
+				"navigationBarTitleText": "登录",
+				"navigationStyle":"custom",
+				"disableScroll":true
 			}
 		}
+		
 	],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",

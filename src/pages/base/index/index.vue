@@ -3,7 +3,7 @@
   <view class="index-container">
     <NavBar/>
     <SSwiper/>
-    <SButton />
+    <SButton  />
     <view class="login-text">
       <text>登录账户</text>
     </view>
@@ -15,6 +15,7 @@ import NavBar from "@/components/NavBar/index";
 import SButton from './components/SButton.vue';
 import SSwiper from './components/SSwiper.vue';
 export default {
+  name:'Index',
   components: {
     SButton,
     SSwiper,
@@ -23,7 +24,9 @@ export default {
   data() {
     return {};
   },
-  methods: {},
+  methods: {
+  
+  },
 };
 </script>
 

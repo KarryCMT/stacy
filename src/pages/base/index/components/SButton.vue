@@ -1,6 +1,6 @@
 <template>
   <view class="s-button-container">
-    <view class="btn">{{ title }}</view>
+    <view class="btn" @click="onLogin">{{ title }}</view>
   </view>
 </template>
 <script>
@@ -16,7 +16,13 @@ export default {
     return {};
   },
   created() {},
-  methods: {},
+  methods: {
+    onLogin() {
+      uni.navigateTo({
+        url: `/pages/base/login/index`,
+      });
+    },
+  },
 };
 </script>
 <style lang="scss" scoped>

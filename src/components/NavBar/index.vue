@@ -4,18 +4,29 @@
     <view
       :style="{
         marginTop: Fstyle.top,
-        height:Fstyle.height,
+        height: Fstyle.height,
       }"
       class="left-box"
     >
+      <view v-if="isBack" class="back">
+        <image :src="backIcon" @click="onBack" />
+      </view>
     </view>
   </view>
 </template>
 <script>
+import backIcon from '@/static/icon/back-icon.png';
 export default {
   name: 'NavBar',
+  props: {
+    isBack: {
+      type: Boolean,
+      default: false,
+    },
+  },
   data() {
     return {
+      backIcon,
       Fstyle: {
         BoxBgColor: '#fff', //开始时透明色
         top: '48rpx', //子元素位移值 后续可能要根据不同设备进行匹配暂定小程序适配
@@ -39,6 +50,11 @@ export default {
       this.Fstyle.top = top + 'px';
       this.Fstyle.height = height + 'px';
     },
+    onBack() {
+      uni.navigateBack({
+        delta: 2,
+      });
+    },
   },
 };
 </script>
@@ -49,6 +65,18 @@ export default {
   .left-box {
     display: flex;
     width: 100%;
+    .back {
+      display: flex;
+      margin-left: 48rpx;
+      align-items: center;
+      image {
+        width: 48rpx;
+        height: 40rpx;
+      }
+      image:active {
+        opacity: 0.5;
+      }
+    }
   }
 }
 </style>
