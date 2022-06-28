@@ -1,5 +1,5 @@
 <template>
-  <view class="s-swiper-container">
+  <view class="s-swiper-container" :style="{marginTop:top+'px'}">
     <swiper
       class="swiper"
       circular
@@ -34,6 +34,12 @@ import loginBgTwo from '@/static/image/index/login-bg-2.png';
 import loginBgThree from '@/static/image/index/login-bg-3.png';
 export default {
   name: 'SSwiper',
+  props:{
+    top:{
+      type:Number,
+      default:0
+    }
+  },
   data() {
     return {
       imageList: [

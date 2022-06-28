@@ -1,14 +1,13 @@
 <template>
   <!-- 重置密码 -->
   <view class="success-container">
-    <!-- <NavBar :is-back="true" /> -->
     <view class="content">
       <image :src="successPng" />
     </view>
     <view class="login-box">
       <text class="title">成功！</text>
       <text class="desc">您已成功更改密码。登录时请使用新密码。</text>
-      <button>马上登录</button>
+      <button @click="onLogin">马上登录</button>
     </view>
   </view>
 </template>
@@ -27,9 +26,10 @@ export default {
     };
   },
   methods: {
-    formSubmit({ detail }) {
-      const { value } = detail;
-      console.log(value);
+    onLogin( ) {
+     uni.navigateTo({
+      url:`/pages/base/steps/target/index`
+     })
     },
   },
 };

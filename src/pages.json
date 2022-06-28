@@ -1,9 +1,43 @@
 {
 	"pages": [ 
 		{
-			"path": "pages/base/success/index",
+			"path": "pages/base/steps/money/index",
 			"style": {
-				"navigationBarTitleText": "注册成功",
+				"navigationBarTitleText": "费用",
+				"navigationStyle":"custom",
+				"disableScroll":true
+			}
+		},
+		{
+			"path": "pages/base/steps/city/index",
+			"style": {
+				"navigationBarTitleText": "城市",
+				"navigationStyle":"custom",
+				"disableScroll":false
+			}
+		},
+		{
+			"path": "pages/base/steps/target/index",
+			"style": {
+				"navigationBarTitleText": "目标",
+				"navigationStyle":"custom",
+				"disableScroll":true
+			}
+		},
+		
+	
+		{
+			"path": "pages/base/steps/account/index",
+			"style": {
+				"navigationBarTitleText": "账户",
+				"navigationStyle":"custom",
+				"disableScroll":true
+			}
+		},
+		{
+			"path": "pages/base/steps/security/index",
+			"style": {
+				"navigationBarTitleText": "验证码",
 				"navigationStyle":"custom",
 				"disableScroll":true
 			}
@@ -16,6 +50,15 @@
 				"disableScroll":true
 			}
 		},
+		{
+			"path": "pages/base/success/index",
+			"style": {
+				"navigationBarTitleText": "注册成功",
+				"navigationStyle":"custom",
+				"disableScroll":true
+			}
+		},
+	
 		{
 			"path": "pages/base/reset/index",
 			"style": {

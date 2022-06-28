@@ -38,6 +38,8 @@ export default {
       },
     };
   },
+  watch: {
+  },
   created() {},
   mounted() {
     this.getCapsule();
@@ -46,6 +48,7 @@ export default {
     getCapsule() {
       //获取胶囊位置并改变顶部自定义导航栏的位置
       let { height, top } = uni.getMenuButtonBoundingClientRect();
+      this.$emit('height', height + top);
       //让自定义导航栏头部组件始终和胶囊对齐 做到兼容各手机型号
       this.Fstyle.top = top + 'px';
       this.Fstyle.height = height + 'px';
@@ -62,6 +65,9 @@ export default {
 .top-header-bar {
   width: 100%;
   background-color: #fff;
+  position: fixed;
+  top: 0;
+  z-index: 99;
   .left-box {
     display: flex;
     width: 100%;

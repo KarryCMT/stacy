@@ -1,8 +1,8 @@
 <template>
   <!-- 重置密码 -->
   <view class="reset-container">
-    <NavBar :is-back="true" />
-    <view class="title-box">
+    <NavBar :is-back="true" @height="(v) => (height = v)"/>
+    <view class="title-box" :style="{marginTop:height+90+'px'}">
       <text class="text">重置密码</text>
       <text class="desc"
         >重置代码发送到您的电子邮件。请输入代码并创建新密码。</text
@@ -50,7 +50,9 @@ export default {
     NavBar,
   },
   data() {
-    return {};
+    return {
+      height:0
+    };
   },
   methods: {
     formSubmit({ detail }) {

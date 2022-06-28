@@ -1,8 +1,8 @@
 <template>
   <!-- 登录-引导 -->
   <view class="index-container">
-    <NavBar/>
-    <SSwiper/>
+    <NavBar @height="(v) => (height = v)"/>
+    <SSwiper :top="height"/>
     <SButton  />
     <view class="login-text">
       <text>登录账户</text>
@@ -22,7 +22,9 @@ export default {
     NavBar
   },
   data() {
-    return {};
+    return {
+      height:0
+    };
   },
   methods: {
   

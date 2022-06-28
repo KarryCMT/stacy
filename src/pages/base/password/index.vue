@@ -1,8 +1,8 @@
 <template>
   <!-- 忘记密码 -->
   <view class="password-container">
-    <NavBar :is-back="true" />
-    <view class="title-box">
+    <NavBar :is-back="true" @height="(v) => (height = v)"/>
+    <view class="title-box" :style="{marginTop:height+90+'px'}">
       <text class="text">忘记密码？</text>
       <text class="desc">请在下面输入您的电子邮件以接收密码重置邮件</text>
     </view>
@@ -28,7 +28,9 @@ export default {
     NavBar,
   },
   data() {
-    return {};
+    return {
+      height:0
+    };
   },
   methods: {
     formSubmit({ detail }) {

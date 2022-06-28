@@ -1,10 +1,10 @@
 <template>
-  <!-- 登录-引导 -->
-  <view class="login-container">
-    <NavBar :is-back="true"  @height="(v) => (height = v)"/>
-    <view class="title-box" :style="{marginTop:height+90+'px'}">
-      <text class="text">你好，</text>
-      <text class="text">欢迎回来！</text>
+  <!-- steps -->
+  <view class="steps-container">
+    <NavBar :is-back="true" />
+    <view class="title-box">
+      <text class="text">你的寻找目标</text>
+      <text class="text">是什么？</text>
     </view>
     <view class="form-box">
       <form @submit="formSubmit" @reset="formReset">
@@ -33,7 +33,7 @@
         <text class="r">用授权快速登录</text>
       </view>
     </view>
-    <view class="login-text">
+    <view class="steps-text">
       <text>还没有帐号?</text>
       <text class="register">马上注册</text>
     </view>
@@ -43,14 +43,12 @@
 <script>
 import NavBar from '@/components/NavBar/index';
 export default {
-  name: 'Login',
+  name: 'steps',
   components: {
     NavBar,
   },
   data() {
-    return {
-      height:0
-    };
+    return {};
   },
   methods: {
     formSubmit({ detail }) {
@@ -66,7 +64,7 @@ export default {
 </script>
 
 <style lang="scss">
-.login-container {
+.steps-container {
   width: 100%;
   height: 100%;
   .title-box {
@@ -158,7 +156,7 @@ export default {
       }
     }
   }
-  .login-text {
+  .steps-text {
     position: fixed;
     bottom: 105rpx;
     left: 0;
