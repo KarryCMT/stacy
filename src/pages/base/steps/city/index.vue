@@ -9,7 +9,7 @@
     </view>
     <view class="banner-box">
       <view class="items" v-for="(item, index) in bannerList" :key="index">
-        <image :src="item.path" />
+        <image @click="onMoney" :src="item.path" />
         <text class="name">{{ item.name }}</text>
         <text class="parent">{{ item.parent }}</text>
       </view>
@@ -72,7 +72,13 @@ export default {
   mounted(){
     console.log(this.height);
   },
-  methods: {},
+  methods: {
+    onMoney(){
+      uni.navigateTo({
+        url:`/pages/base/steps/money/index`
+      })
+    }
+  },
 };
 </script>
 

@@ -1,64 +1,69 @@
 <template>
   <!-- steps -->
   <view class="steps-container">
-    <NavBar :is-back="true" />
+    <NavBar :is-back="true" @height="(v) => (height = v)" />
+    <ProgressBar :width="100" :top="height" />
+
     <view class="title-box">
-      <text class="text">你的寻找目标</text>
-      <text class="text">是什么？</text>
+      <text class="text">验证码</text>
+      <text class="text-mini text-mini-active">我们给你发了一个验证码</text>
+      <text class="text-mini">请在下面输入</text>
     </view>
     <view class="form-box">
-      <form @submit="formSubmit" @reset="formReset">
-        <view class="form-item">
-          <view class="tips">用户名</view>
-          <input placeholder="用户名" maxlength="18" name="username" />
-        </view>
-        <view class="form-item">
-          <view class="tips">密码</view>
-          <input
-            type="password"
-            maxlength="20"
-            placeholder="密码"
-            name="password"
-          />
-        </view>
-        <view class="not-password" @click="notPwd">忘记密码？</view>
-        <view class="form-btn">
-          <button form-type="submit">登录</button>
-        </view>
-      </form>
-    </view>
-    <view class="new-box">
-      <view class="new-txt">
-        <text class="l">新! </text>
-        <text class="r">用授权快速登录</text>
+      <view class="form-item">
+        <input maxlength="1" name="username" />
+      </view>
+      <view class="form-item">
+        <input maxlength="1" name="username" />
+      </view>
+      <view class="form-item">
+        <input maxlength="1" name="username" />
+      </view>
+      <view class="form-item">
+        <input maxlength="1" name="username" />
+      </view>
+      <view class="form-item">
+        <input maxlength="1" name="username" />
+      </view>
+      <view class="form-item">
+        <input maxlength="1" name="username" />
       </view>
     </view>
-    <view class="steps-text">
-      <text>还没有帐号?</text>
-      <text class="register">马上注册</text>
+    <view class="desc">这有助于我们对每个用户进行身份验证</view>
+    <view class="sent-code">
+      <text class="l">没有接收到验证码?</text>
+      <text class="r">重新发送</text>
+    </view>
+    <view class="footer-box">
+      <button @click="onSuccess">完成</button>
     </view>
   </view>
 </template>
 
 <script>
 import NavBar from '@/components/NavBar/index';
+import ProgressBar from '@/components/ProgressBar/index';
+
 export default {
   name: 'steps',
   components: {
     NavBar,
+    ProgressBar,
   },
   data() {
-    return {};
+    return {
+      height: 0,
+    };
   },
   methods: {
     formSubmit({ detail }) {
       const { value } = detail;
     },
-    notPwd(){
+    onSuccess() {
       uni.navigateTo({
-        url:`/pages/base/password/index`
-      })
-    }
+        url: `/pages/base/password/index`,
+      });
+    },
   },
 };
 </script>
@@ -77,45 +82,41 @@ export default {
       font-weight: bold;
       color: #020433;
     }
+    .text-mini {
+      font-size: 28rpx;
+      font-family: PingFang;
+      font-weight: 500;
+      color: #020433;
+    }
+    .text-mini-active {
+      margin-top: 47rpx;
+    }
   }
   .form-box {
     margin-top: 89rpx;
     padding: 0 48rpx;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
     .form-item {
-      width: 100%;
-      height: 108rpx;
+      width: 64rpx;
+      height: 99rpx;
       background: #ffffff;
-      border: 2rpx solid #f0f0f0;
-      border-radius: 12rpx 12rpx 12rpx 12rpx;
-      padding: 13rpx 34rpx 13rpx 34rpx;
-      box-sizing: border-box;
-      .tips {
-        font-size: 24rpx;
-        font-family: PingFang;
-        font-weight: bold;
-        color: #404b69;
-      }
+      border-bottom: 4rpx solid #f0f0f0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       input {
-        font-size: 32rpx;
+        height: 100%;
+        width: 100%;
+        font-size: 72rpx;
         font-family: Montserrat;
         font-weight: 500;
         color: #020433;
+        text-align: center;
       }
     }
-    .form-item:nth-child(2) {
-      margin-top: 32rpx;
-    }
-    .not-password {
-      margin: 36rpx 0 53rpx 0;
-      text-align: right;
-      font-size: 28rpx;
-      font-family: PingFang;
-      font-weight: bold;
-      color: #404b69;
-    }
-    .not-password:active {
-      opacity: 0.5;
-    }
+
     .form-btn {
       button {
         width: 100%;
@@ -135,47 +136,58 @@ export default {
       }
     }
   }
-  .new-box {
-    margin-top: 84rpx;
-    .new-txt {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      .l {
-        font-size: 28rpx;
-        font-family: PingFang;
-        font-weight: 500;
-        color: #ff4949;
-      }
-      .r {
-        margin-left: 6rpx;
-        font-size: 28rpx;
-        font-family: PingFang;
-        font-weight: 500;
-        color: #020433;
-      }
-    }
-  }
-  .steps-text {
-    position: fixed;
-    bottom: 105rpx;
-    left: 0;
-    right: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 28rpx;
+  .desc {
+    margin-top: 38rpx;
+    width: 100%;
+    text-align: center;
+    font-size: 24rpx;
     font-family: PingFang;
-    font-weight: bold;
+    font-weight: 500;
     color: #404b69;
-    .register {
+  }
+  .sent-code {
+    margin-top: 141rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .l {
+      font-size: 28rpx;
+      font-family: PingFang SC;
+      font-weight: bold;
+      color: #020433;
+    }
+    .r {
       margin-left: 8rpx;
       font-size: 28rpx;
-      font-family: PingFang;
+      font-family: PingFang SC;
       font-weight: bold;
       color: #0f73ee;
     }
-    .register:active {
+    .r:active {
+      opacity: 0.5;
+    }
+  }
+  .footer-box {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 184rpx;
+    background: #ffffff;
+    padding: 0 48rpx;
+    box-sizing: border-box;
+    button {
+      width: 100%;
+      height: 92rpx;
+      background: linear-gradient(135deg, #0f73ee 0%, #c644fc 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28rpx;
+      font-family: PingFang;
+      font-weight: bold;
+      color: #ffffff;
+    }
+    button:active {
       opacity: 0.5;
     }
   }

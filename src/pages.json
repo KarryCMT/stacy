@@ -1,6 +1,23 @@
 {
 	"pages": [ 
 		{
+			"path": "pages/base/steps/security/index",
+			"style": {
+				"navigationBarTitleText": "验证码",
+				"navigationStyle":"custom",
+				"disableScroll":true
+			}
+		},
+	
+		{
+			"path": "pages/base/steps/account/index",
+			"style": {
+				"navigationBarTitleText": "账户",
+				"navigationStyle":"custom",
+				"disableScroll":false
+			}
+		},
+		{
 			"path": "pages/base/steps/money/index",
 			"style": {
 				"navigationBarTitleText": "费用",
@@ -26,30 +43,9 @@
 		},
 		
 	
-		{
-			"path": "pages/base/steps/account/index",
-			"style": {
-				"navigationBarTitleText": "账户",
-				"navigationStyle":"custom",
-				"disableScroll":true
-			}
-		},
-		{
-			"path": "pages/base/steps/security/index",
-			"style": {
-				"navigationBarTitleText": "验证码",
-				"navigationStyle":"custom",
-				"disableScroll":true
-			}
-		},
-		{
-			"path": "pages/base/index/index",
-			"style": {
-				"navigationBarTitleText": "首页",
-				"navigationStyle":"custom",
-				"disableScroll":true
-			}
-		},
+	
+	
+		
 		{
 			"path": "pages/base/success/index",
 			"style": {
@@ -75,6 +71,7 @@
 				"disableScroll":true
 			}
 		},
+		
 		{
 			"path": "pages/base/login/index",
 			"style": {
@@ -82,7 +79,16 @@
 				"navigationStyle":"custom",
 				"disableScroll":true
 			}
+		},
+		{
+			"path": "pages/base/index/index",
+			"style": {
+				"navigationBarTitleText": "首页",
+				"navigationStyle":"custom",
+				"disableScroll":true
+			}
 		}
+		
 		
 	],
 	"globalStyle": {
