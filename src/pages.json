@@ -1,6 +1,57 @@
 {
 	"pages": [ 
 		{
+			"path": "pages/base/register/interest/index",
+			"style": {
+				"navigationBarTitleText": "兴趣",
+				"navigationStyle":"custom",
+				"disableScroll":true
+			}
+		},
+		{
+			"path": "pages/base/register/sweep/index",
+			"style": {
+				"navigationBarTitleText": "打扫",
+				"navigationStyle":"custom",
+				"disableScroll":true
+			}
+		},
+			
+		{
+			"path": "pages/base/register/welcome/index",
+			"style": {
+				"navigationBarTitleText": "欢迎",
+				"navigationStyle":"custom",
+				"disableScroll":true
+			}
+		},
+		{
+			"path": "pages/base/register/visitor/index",
+			"style": {
+				"navigationBarTitleText": "访客",
+				"navigationStyle":"custom",
+				"disableScroll":true
+			}
+		},
+		
+		{
+			"path": "pages/base/register/smoke/index",
+			"style": {
+				"navigationBarTitleText": "吸烟",
+				"navigationStyle":"custom",
+				"disableScroll":true
+			}
+		},
+		{
+			"path": "pages/base/register/pet/index",
+			"style": {
+				"navigationBarTitleText": "宠物",
+				"navigationStyle":"custom",
+				"disableScroll":true
+			}
+		},
+	
+		{
 			"path": "pages/base/steps/security/index",
 			"style": {
 				"navigationBarTitleText": "验证码",
