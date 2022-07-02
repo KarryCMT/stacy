@@ -1,15 +1,18 @@
 <template>
-  <view class="tool-container">
+  <view class="filter-container" :style="{bottom:offset+'rpx'}">
     <view
       class="content"
+      :style="{ width: type === 'map' ? '348rpx' : '174rpx' }"
     >
-      <view class="map" @click="onMap">
+      <view v-if="type === 'map'" class="map" @click="onMap">
         <text>地图</text>
         <image :src="mapPng" />
       </view>
-      <view class="line"></view>
+      <view class="line" v-if="type == 'map'"></view>
       <view
+        v-if="type === 'filter'"
         class="filter"
+        :style="{ width: type === 'filter' ? '100%' : '50%' }"
         @click="onFilter"
       >
         <text>筛选</text>
@@ -22,7 +25,7 @@
 import filterPng from '@/static/icon/ic_filter.png';
 import mapPng from '@/static/icon/ic_map.png';
 export default {
-  name: 'Tool',
+  name: 'Filter',
   props: {
     type: {
       type: String,
@@ -51,7 +54,7 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-.tool-container {
+.filter-container {
   position: fixed;
   bottom: 48rpx;
   left: 0;

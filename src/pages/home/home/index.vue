@@ -3,7 +3,7 @@
     <view class="content">
       <CardItem v-for="(item, index) in itemList" :item="item" :key="index" />
     </view>
-    <Tool />
+    <Tool type="map"  @map="onMap"/>
   </view>
 </template>
 <script>
@@ -88,7 +88,13 @@ export default {
     };
   },
   created() {},
-  methods: {},
+  methods: {
+    onMap(){
+      uni.navigateTo({
+        url:`/pages/home/map/index`
+      })
+    }
+  },
 };
 </script>
 <style lang="scss" scoped>
