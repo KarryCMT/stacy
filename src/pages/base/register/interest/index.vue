@@ -5,6 +5,7 @@
       :is-back="true"
       bg-color="rgba(255,255,255,0)"
       @height="(v) => (height = v)"
+      isWhite
     />
     <view class="content">
       <image :src="interestPng" />
@@ -15,22 +16,25 @@
     </view>
     <view class="item-box">
       <view
-        class="items"
+        :class="[item.isSelect ? 'items-active' : 'items']"
         @click="onInterest"
         v-for="(item, index) in itemList"
         :key="index"
       >
-       {{ item.name }}
+        {{ item.name }}
       </view>
+    </view>
+    <view class="footer-box">
+      <button @click="onSuccess">完成</button>
     </view>
   </view>
 </template>
 
 <script>
-import NavBar from "@/components/NavBar/index";
-import interestPng from "@/static/image/register/interest-icon.png";
+import NavBar from '@/components/NavBar/index';
+import interestPng from '@/static/image/register/interest-icon.png';
 export default {
-  name: "interest",
+  name: 'interest',
   components: {
     NavBar,
   },
@@ -40,47 +44,47 @@ export default {
       height: 0,
       itemList: [
         {
-          name: "美食",
+          name: '美食',
           isSelect: false,
           value: 1,
         },
         {
-          name: "体育&健身",
+          name: '体育&健身',
           isSelect: false,
           value: 2,
         },
         {
-          name: "派对",
+          name: '派对',
           isSelect: false,
           value: 3,
         },
         {
-          name: "看书阅读",
+          name: '看书阅读',
           isSelect: false,
           value: 3,
         },
         {
-          name: "夜生活",
+          name: '夜生活',
           isSelect: false,
           value: 3,
         },
         {
-          name: "听音乐",
+          name: '听音乐',
+          isSelect: true,
+          value: 3,
+        },
+        {
+          name: '旅游',
           isSelect: false,
           value: 3,
         },
         {
-          name: "旅游",
+          name: '玩游戏',
           isSelect: false,
           value: 3,
         },
         {
-          name: "玩游戏",
-          isSelect: false,
-          value: 3,
-        },
-        {
-          name: "看电视",
+          name: '看电视',
           isSelect: false,
           value: 3,
         },
@@ -88,9 +92,9 @@ export default {
     };
   },
   methods: {
-    onInterest() {
+    onSuccess() {
       uni.navigateTo({
-        url: `/pages/base/register/interest/index`,
+        url: `/pages/base/register/success/index`,
       });
     },
   },
@@ -109,7 +113,7 @@ export default {
     margin-top: 116rpx;
     width: 680rpx;
     height: 680rpx;
-    background: url("~@/static/image/success/circle.png") no-repeat;
+    background: url('~@/static/image/success/circle.png') no-repeat;
     background-size: 100% 100%;
     display: flex;
     align-items: center;
@@ -140,30 +144,59 @@ export default {
   .item-box {
     width: 100%;
     display: flex;
-    padding: 0 64rpx;
+    padding: 0 64rpx 0 48rpx;
     flex-wrap: wrap;
     box-sizing: border-box;
-    .items {
+    .items,
+    .items-active {
       margin-top: 32rpx;
       padding: 30rpx 48rpx;
       background: #ffffff;
       box-shadow: 0px 4rpx 10rpx 0px rgba(0, 0, 0, 0.05);
       border-radius: 12rpx;
       display: flex;
+      margin-left: 16rpx;
       align-items: center;
-      text {
-        margin-left: 28rpx;
-        font-size: 28rpx;
-        font-family: PingFang;
-        font-weight: 500;
-        color: #020433;
-      }
+      font-size: 2r8px;
+      font-family: PingFang;
+      font-weight: bold;
+      color: #020433;
       image:active {
         opacity: 0.5;
       }
     }
-    .items:active {
+    .items-active {
+      border: 2rpx solid #ffffff;
+      background: rgba(255, 255, 255, 0);
+      color: #ffffff;
+    }
+    .items:active,
+    .items-active:active {
       opacity: 0.5;
+    }
+  }
+  .footer-box {
+    position: fixed;
+    bottom: 90rpx;
+    width: 100%;
+    padding: 0 48rpx;
+    left: 0;
+    right: 0;
+    box-sizing: border-box;
+    button {
+      width: 100%;
+      height: 92rpx;
+      background: #ffffff;
+      font-size: 28rpx;
+      font-family: PingFang;
+      font-weight: bold;
+      color: #020433;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    button:active{
+      opacity: .5;
     }
   }
 }

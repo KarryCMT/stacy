@@ -1,151 +1,200 @@
 {
-	"pages": [ 
-		{
-			"path": "pages/base/register/interest/index",
-			"style": {
-				"navigationBarTitleText": "兴趣",
-				"navigationStyle":"custom",
-				"disableScroll":true
-			}
-		},
-		{
-			"path": "pages/base/register/sweep/index",
-			"style": {
-				"navigationBarTitleText": "打扫",
-				"navigationStyle":"custom",
-				"disableScroll":true
-			}
-		},
-			
-		{
-			"path": "pages/base/register/welcome/index",
-			"style": {
-				"navigationBarTitleText": "欢迎",
-				"navigationStyle":"custom",
-				"disableScroll":true
-			}
-		},
-		{
-			"path": "pages/base/register/visitor/index",
-			"style": {
-				"navigationBarTitleText": "访客",
-				"navigationStyle":"custom",
-				"disableScroll":true
-			}
-		},
-		
-		{
-			"path": "pages/base/register/smoke/index",
-			"style": {
-				"navigationBarTitleText": "吸烟",
-				"navigationStyle":"custom",
-				"disableScroll":true
-			}
-		},
-		{
-			"path": "pages/base/register/pet/index",
-			"style": {
-				"navigationBarTitleText": "宠物",
-				"navigationStyle":"custom",
-				"disableScroll":true
-			}
-		},
-	
-		{
-			"path": "pages/base/steps/security/index",
-			"style": {
-				"navigationBarTitleText": "验证码",
-				"navigationStyle":"custom",
-				"disableScroll":true
-			}
-		},
-	
-		{
-			"path": "pages/base/steps/account/index",
-			"style": {
-				"navigationBarTitleText": "账户",
-				"navigationStyle":"custom",
-				"disableScroll":false
-			}
-		},
-		{
-			"path": "pages/base/steps/money/index",
-			"style": {
-				"navigationBarTitleText": "费用",
-				"navigationStyle":"custom",
-				"disableScroll":true
-			}
-		},
-		{
-			"path": "pages/base/steps/city/index",
-			"style": {
-				"navigationBarTitleText": "城市",
-				"navigationStyle":"custom",
-				"disableScroll":false
-			}
-		},
-		{
-			"path": "pages/base/steps/target/index",
-			"style": {
-				"navigationBarTitleText": "目标",
-				"navigationStyle":"custom",
-				"disableScroll":true
-			}
-		},
-		
-	
-	
-	
-		
-		{
-			"path": "pages/base/success/index",
-			"style": {
-				"navigationBarTitleText": "注册成功",
-				"navigationStyle":"custom",
-				"disableScroll":true
-			}
-		},
-	
-		{
-			"path": "pages/base/reset/index",
-			"style": {
-				"navigationBarTitleText": "重置密码",
-				"navigationStyle":"custom",
-				"disableScroll":true
-			}
-		},
-		{
-			"path": "pages/base/password/index",
-			"style": {
-				"navigationBarTitleText": "找回密码",
-				"navigationStyle":"custom",
-				"disableScroll":true
-			}
-		},
-		
-		{
-			"path": "pages/base/login/index",
-			"style": {
-				"navigationBarTitleText": "登录",
-				"navigationStyle":"custom",
-				"disableScroll":true
-			}
-		},
-		{
-			"path": "pages/base/index/index",
-			"style": {
-				"navigationBarTitleText": "首页",
-				"navigationStyle":"custom",
-				"disableScroll":true
-			}
-		}
-		
-		
-	],
-	"globalStyle": {
-		"navigationBarTextStyle": "black",
-		"navigationBarTitleText": "Stracy",
-		"navigationBarBackgroundColor": "#F8F8F8",
-		"backgroundColor": "#F8F8F8"
-	}
+  "pages": [
+    {
+      "path": "pages/home/map/index",
+      "style": {
+        "navigationBarTitleText": "地图",
+        "navigationStyle": "custom",
+        "disableScroll": true
+      }
+    },
+    {
+      "path": "pages/home/home/index",
+      "style": {
+        "navigationBarTitleText": "首页"
+      }
+    },
+    {
+      "path": "pages/base/register/success/index",
+      "style": {
+        "navigationBarTitleText": "完成",
+        "navigationStyle": "custom",
+        "disableScroll": true
+      }
+    },
+    {
+      "path": "pages/base/register/interest/index",
+      "style": {
+        "navigationBarTitleText": "兴趣",
+        "navigationStyle": "custom",
+        "disableScroll": true
+      }
+    },
+    {
+      "path": "pages/base/register/sweep/index",
+      "style": {
+        "navigationBarTitleText": "打扫",
+        "navigationStyle": "custom",
+        "disableScroll": true
+      }
+    },
+
+    {
+      "path": "pages/base/register/welcome/index",
+      "style": {
+        "navigationBarTitleText": "欢迎",
+        "navigationStyle": "custom",
+        "disableScroll": true
+      }
+    },
+    {
+      "path": "pages/base/register/visitor/index",
+      "style": {
+        "navigationBarTitleText": "访客",
+        "navigationStyle": "custom",
+        "disableScroll": true
+      }
+    },
+
+    {
+      "path": "pages/base/register/smoke/index",
+      "style": {
+        "navigationBarTitleText": "吸烟",
+        "navigationStyle": "custom",
+        "disableScroll": true
+      }
+    },
+    {
+      "path": "pages/base/register/pet/index",
+      "style": {
+        "navigationBarTitleText": "宠物",
+        "navigationStyle": "custom",
+        "disableScroll": true
+      }
+    },
+
+    {
+      "path": "pages/base/steps/security/index",
+      "style": {
+        "navigationBarTitleText": "验证码",
+        "navigationStyle": "custom",
+        "disableScroll": true
+      }
+    },
+
+    {
+      "path": "pages/base/steps/account/index",
+      "style": {
+        "navigationBarTitleText": "账户",
+        "navigationStyle": "custom",
+        "disableScroll": false
+      }
+    },
+    {
+      "path": "pages/base/steps/money/index",
+      "style": {
+        "navigationBarTitleText": "费用",
+        "navigationStyle": "custom",
+        "disableScroll": true
+      }
+    },
+    {
+      "path": "pages/base/steps/city/index",
+      "style": {
+        "navigationBarTitleText": "城市",
+        "navigationStyle": "custom",
+        "disableScroll": false
+      }
+    },
+    {
+      "path": "pages/base/steps/target/index",
+      "style": {
+        "navigationBarTitleText": "目标",
+        "navigationStyle": "custom",
+        "disableScroll": true
+      }
+    },
+
+    {
+      "path": "pages/base/success/index",
+      "style": {
+        "navigationBarTitleText": "注册成功",
+        "navigationStyle": "custom",
+        "disableScroll": true
+      }
+    },
+
+    {
+      "path": "pages/base/reset/index",
+      "style": {
+        "navigationBarTitleText": "重置密码",
+        "navigationStyle": "custom",
+        "disableScroll": true
+      }
+    },
+    {
+      "path": "pages/base/password/index",
+      "style": {
+        "navigationBarTitleText": "找回密码",
+        "navigationStyle": "custom",
+        "disableScroll": true
+      }
+    },
+
+    {
+      "path": "pages/base/login/index",
+      "style": {
+        "navigationBarTitleText": "登录",
+        "navigationStyle": "custom",
+        "disableScroll": true
+      }
+    },
+    {
+      "path": "pages/base/index/index",
+      "style": {
+        "navigationBarTitleText": "首页",
+        "navigationStyle": "custom",
+        "disableScroll": true
+      }
+    }
+  ],
+  "globalStyle": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "Stracy",
+    "navigationBarBackgroundColor": "#F8F8F8",
+    "backgroundColor": "#F8F8F8"
+  },
+  "tabBar": {
+    "color": "#7A7E83",
+    "selectedColor": "#3cc51f",
+    "borderStyle": "white",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/home/home/index",
+        "iconPath": "static/tabbar/handbook.png",
+        "selectedIconPath": "static/tabbar/handbook-select.png"
+      },
+      {
+        "pagePath": "pages/home/home/index",
+        "iconPath": "static/tabbar/saved.png",
+        "selectedIconPath": "static/tabbar/saved-select.png"
+      },
+      {
+        "pagePath": "pages/home/home/index",
+        "iconPath": "static/tabbar/notification.png",
+        "selectedIconPath": "static/tabbar/notification-select.png"
+      },
+      {
+        "pagePath": "pages/home/home/index",
+        "iconPath": "static/tabbar/handbook.png",
+        "selectedIconPath": "static/tabbar/handbook-select.png"
+      },
+      {
+        "pagePath": "pages/home/home/index",
+        "iconPath": "static/tabbar/menu.png",
+        "selectedIconPath": "static/tabbar/menu-select.png"
+      }
+    ]
+  }
 }

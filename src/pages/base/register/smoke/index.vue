@@ -5,6 +5,7 @@
       :is-back="true"
       bg-color="rgba(255,255,255,0)"
       @height="(v) => (height = v)"
+      isWhite
     />
     <view class="content">
       <image :src="smokePng" />
