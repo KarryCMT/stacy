@@ -25,13 +25,21 @@
       <text class="text">是什么？</text>
     </view>
     <view class="time-box">
-      <view class="date">
-        <view class="l">
-          <text class="t">入住日期</text>
-          <text class="times">{{ '6月6日, 2018' }}</text>
+      <picker
+        mode="date"
+        :value="stayDate"
+        :start="startDate"
+        :end="endDate"
+        @change="bindDateChange"
+      >
+        <view class="date">
+          <view class="l">
+            <text class="t">入住日期</text>
+            <text class="times">{{ titleTime || '请选择' }}</text>
+          </view>
+          <image class="img" :src="dateIcon" />
         </view>
-        <image class="img" :src="dateIcon" />
-      </view>
+      </picker>
     </view>
     <view class="footer-box">
       <button @click="onNext">下一步</button>
@@ -52,22 +60,63 @@ export default {
     ProgressLine,
   },
   data() {
+    const currentDate = this.getDate({
+      format: true,
+    });
     return {
       dateIcon,
       height: 0,
       count: 0,
+      stayDate: currentDate,
+      titleTime:''
     };
+  },
+  computed: {
+    startDate() {
+      return this.getDate('start');
+    },
+    endDate() {
+      return this.getDate('end');
+    },
   },
   mounted() {},
   methods: {
     moveEvent(e) {
       this.count = e * 100;
     },
-    onNext(){
+    onNext() {
+      const register = uni.getStorageSync('register');
+      if (register) {
+        Object.assign(register, {
+          maxMoney: this.count,
+          stayDate: Date.parse(this.stayDate+` 00:00:00`),
+        });
+        uni.setStorageSync('register', register);
+      }
       uni.navigateTo({
-        url:`/pages/base/steps/account/index`
-      })
-    }
+        url: `/pages/base/steps/account/index`,
+      });
+    },
+    getDate(type) {
+      const date = new Date();
+      let year = date.getFullYear();
+      let month = date.getMonth() + 1;
+      let day = date.getDate();
+
+      if (type === 'start') {
+        year = year - 60;
+      } else if (type === 'end') {
+        year = year + 2;
+      }
+      month = month > 9 ? month : '0' + month;
+      day = day > 9 ? day : '0' + day;
+      return `${year}-${month}-${day}`;
+    },
+    bindDateChange({ detail }) {
+      this.stayDate = detail.value;
+      const [year, month, day] = detail.value.split('-');
+      this.titleTime = `${month}月${day}日, ${year}`;
+    },
   },
 };
 </script>
@@ -182,8 +231,8 @@ export default {
       font-weight: bold;
       color: #ffffff;
     }
-    button:active{
-      opacity: .5;
+    button:active {
+      opacity: 0.5;
     }
   }
 }

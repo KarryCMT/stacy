@@ -9,7 +9,7 @@
     </view>
     <view class="banner-box">
       <image
-        @click="onCity"
+        @click="onCity(item.id)"
         :src="item.path"
         v-for="(item, index) in bannerList"
         :key="index"
@@ -55,7 +55,10 @@ export default {
     };
   },
   methods: {
-    onCity() {
+    onCity(id) {
+      uni.setStorageSync('register',{
+        target:id,
+      })
       uni.navigateTo({
         url: `/pages/base/steps/city/index`,
       });

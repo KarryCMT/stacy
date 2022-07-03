@@ -2,14 +2,14 @@
   <!-- city -->
   <view class="city-container">
     <NavBar :is-back="true" @height="(v) => (height = v)" />
-    <ProgressBar :width="40" :top="height"/>
+    <ProgressBar :width="40" :top="height" />
     <view class="title-box">
       <text class="text">你想在哪里</text>
       <text class="text">寻找？</text>
     </view>
     <view class="banner-box">
       <view class="items" v-for="(item, index) in bannerList" :key="index">
-        <image @click="onMoney" :src="item.path" />
+        <image @click="onMoney(item.name)" :src="item.path" />
         <text class="name">{{ item.name }}</text>
         <text class="parent">{{ item.parent }}</text>
       </view>
@@ -69,15 +69,20 @@ export default {
       ],
     };
   },
-  mounted(){
+  mounted() {
     console.log(this.height);
   },
   methods: {
-    onMoney(){
+    onMoney(name) {
+      const register = uni.getStorageSync('register');
+      if (register) {
+        Object.assign(register, { targetCity: name });
+        uni.setStorageSync('register', register);
+      }
       uni.navigateTo({
-        url:`/pages/base/steps/money/index`
-      })
-    }
+        url: `/pages/base/steps/money/index`,
+      });
+    },
   },
 };
 </script>

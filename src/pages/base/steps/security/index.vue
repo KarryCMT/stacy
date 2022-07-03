@@ -43,7 +43,7 @@
 <script>
 import NavBar from '@/components/NavBar/index';
 import ProgressBar from '@/components/ProgressBar/index';
-
+import {Register} from "@/api/index.js";
 export default {
   name: 'steps',
   components: {
@@ -59,10 +59,19 @@ export default {
     formSubmit({ detail }) {
       const { value } = detail;
     },
-    onSuccess() {
-      uni.navigateTo({
-        url: `/pages/base/password/index`,
-      });
+   async onSuccess() {
+     const register = uni.getStorageSync('register');
+     const {code,data} = await Register({...register,photo:register.photo.join(',')})
+     if (code===200) {
+      uni.showToast({
+        title:data.message,
+        icon:'none'
+      })
+     }
+
+      // uni.navigateTo({
+      //   url: `/pages/base/password/index`,
+      // });
     },
   },
 };

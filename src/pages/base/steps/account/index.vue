@@ -17,32 +17,41 @@
             placeholder-class="plh"
             maxlength="18"
             name="username"
+            v-model="form.userName"
           />
         </view>
         <view class="form-item-sex">
           <view class="sex-title">性别</view>
           <view class="sex-box">
             <view
-              :class="[currentSexIndex === index ? 'active' : 'items']"
+              :class="[form.sex === index ? 'active' : 'items']"
               v-for="(item, index) in [
                 { name: '男', value: 1 },
-                { name: '女', value: 2 },
-                { name: '保密', value: 3 },
+                { name: '女', value: 0 },
+                { name: '保密', value: 2 },
               ]"
               :key="index"
-              @click="currentSexIndex = index"
+              @click="form.sex = index"
               >{{ item.name }}</view
             >
           </view>
         </view>
         <view class="form-item m-top">
-          <view class="date">
-            <view class="l">
-              <text class="t">入住日期</text>
-              <text class="times">{{ 'Jul 6, 1990' }}</text>
+          <picker
+            mode="date"
+            :value="birthDate"
+            :start="startDate"
+            :end="endDate"
+            @change="bindDateChange"
+          >
+            <view class="date">
+              <view class="l">
+                <text class="t">出生日期</text>
+                <text class="times">{{ titleTime || '请选择' }}</text>
+              </view>
+              <image class="img" :src="dateIcon" />
             </view>
-            <image class="img" :src="dateIcon" />
-          </view>
+          </picker>
         </view>
         <view class="form-item m-top">
           <view class="tips">联系电话</view>
@@ -54,6 +63,7 @@
               maxlength="11"
               type="number"
               name="phone"
+              v-model="form.phone"
             />
           </view>
         </view>
@@ -64,6 +74,7 @@
             placeholder-class="plh"
             maxlength="18"
             name="username"
+            v-model="form.email"
           />
         </view>
         <view class="form-item m-top">
@@ -74,6 +85,7 @@
             type="password"
             maxlength="18"
             name="password"
+            v-model="form.password"
           />
         </view>
         <view class="form-item m-top">
@@ -84,15 +96,28 @@
             type="password"
             maxlength="18"
             name="password"
+            v-model="confirmPassword"
           />
         </view>
         <view class="form-item m-top">
           <view class="tips">你的职业是什么？</view>
-          <view class="txt">演员 - 模特</view>
+          <input
+            placeholder="请输入"
+            placeholder-class="plh"
+            maxlength="18"
+            name="username"
+            v-model="form.occupation"
+          />
         </view>
         <view class="form-item m-top">
           <view class="tips">工作地点</view>
-          <view class="txt">重庆</view>
+          <input
+            placeholder="请输入"
+            placeholder-class="plh"
+            maxlength="18"
+            name="username"
+            v-model="form.workPlace"
+          />
         </view>
         <view class="form-item-textarea m-top">
           <view class="tips">个人简介</view>
@@ -102,6 +127,7 @@
               placeholder-class="plh"
               auto-height
               maxlength="100"
+              v-model="form.profile"
             ></textarea>
           </view>
         </view>
@@ -113,7 +139,8 @@
         <text class="r">(最大数量5)</text>
       </view>
       <view class="image-box">
-        <image :src="uploadIcon" />
+        <image v-if="form.photo.length < 5" :src="uploadIcon" />
+        <image v-else :src="item" v-for="(item, index) in form.photo" :key="index" />
       </view>
     </view>
     <view class="footer-box">
@@ -135,20 +162,101 @@ export default {
     ProgressBar,
   },
   data() {
+    const currentDate = this.getDate({
+      format: true,
+    });
     return {
+      confirmPassword: '',
+      form: {
+        userName: '',
+        password:'',
+        sex: 0,
+        birthDate: '',
+        phone: '',
+        email: '',
+        occupation: '',
+        workPlace: '',
+        profile: '',
+        photo: [
+          'https://pica.zhimg.com/80/v2-73e59b3d07631ed49a6dabe3733e0594_1440w.jpg?source=1940ef5c',
+          'https://pic2.zhimg.com/80/v2-4a7d91393c150dc397373ec7ec69e3f5_1440w.jpg?source=1940ef5c',
+          'https://pic3.zhimg.com/80/v2-a73d5eb48dc781537336b2780402b685_1440w.jpg?source=1940ef5c',
+          'https://pic3.zhimg.com/80/v2-a73d5eb48dc781537336b2780402b685_1440w.jpg?source=1940ef5c',
+          'https://pic3.zhimg.com/80/v2-a73d5eb48dc781537336b2780402b685_1440w.jpg?source=1940ef5c',
+        ],
+      },
+
       height: 0,
       currentSexIndex: 0,
       dateIcon,
       uploadIcon,
+      birthDate: currentDate,
+      titleTime: '',
     };
+  },
+  computed: {
+    startDate() {
+      return this.getDate('start');
+    },
+    endDate() {
+      return this.getDate('end');
+    },
   },
   methods: {
     formSubmit({ detail }) {
       const { value } = detail;
     },
     notSecurity() {
+      if (this.confirmPassword !== this.form.password) {
+        uni.showToast({
+          title: '密码不一致',
+          icon: 'none',
+        });
+        return;
+      }
+      const register = uni.getStorageSync('register');
+      if (register) {
+        Object.assign(register, { ...this.form, birthDate: Date.parse(this.birthDate+` 00:00:00`), });
+        uni.setStorageSync('register', register);
+      }
       uni.navigateTo({
         url: `/pages/base/steps/security/index`,
+      });
+    },
+    getDate(type) {
+      const date = new Date();
+      let year = date.getFullYear();
+      let month = date.getMonth() + 1;
+      let day = date.getDate();
+
+      if (type === 'start') {
+        year = year - 60;
+      } else if (type === 'end') {
+        year = year + 2;
+      }
+      month = month > 9 ? month : '0' + month;
+      day = day > 9 ? day : '0' + day;
+      return `${year}-${month}-${day}`;
+    },
+    bindDateChange({ detail }) {
+      this.birthDate = detail.value;
+      const [year, month, day] = detail.value.split('-');
+      this.titleTime = `${month}月${day}日, ${year}`;
+    },
+    onLocationAddress() {
+      uni.getLocation({
+        type: 'gcj02', //返回可以用于uni.openLocation的经纬度
+        success: (res) => {
+          const latitude = res.latitude;
+          const longitude = res.longitude;
+          uni.openLocation({
+            latitude: latitude,
+            longitude: longitude,
+            success: () => {
+              console.log('success');
+            },
+          });
+        },
       });
     },
   },

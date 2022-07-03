@@ -1,6 +1,14 @@
 {
   "pages": [
     {
+      "path": "pages/base/steps/target/index",
+      "style": {
+        "navigationBarTitleText": "目标",
+        "navigationStyle": "custom",
+        "disableScroll": true
+      }
+    },
+    {
       "path": "pages/home/map/index",
       "style": {
         "navigationBarTitleText": "地图",
@@ -106,14 +114,7 @@
         "disableScroll": false
       }
     },
-    {
-      "path": "pages/base/steps/target/index",
-      "style": {
-        "navigationBarTitleText": "目标",
-        "navigationStyle": "custom",
-        "disableScroll": true
-      }
-    },
+  
 
     {
       "path": "pages/base/success/index",

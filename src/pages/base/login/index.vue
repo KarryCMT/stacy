@@ -35,7 +35,7 @@
     </view>
     <view class="login-text">
       <text>还没有帐号?</text>
-      <text class="register">马上注册</text>
+      <text class="register" @click="onRegister">马上注册</text>
     </view>
   </view>
 </template>
@@ -59,6 +59,11 @@ export default {
     notPwd(){
       uni.navigateTo({
         url:`/pages/base/password/index`
+      })
+    },
+    onRegister(){
+        uni.navigateTo({
+        url:`/pages/base/steps/target/index`
       })
     }
   },
